@@ -52,3 +52,53 @@ for player_dict in players:
 # Display information for each player in the new list
 for player in player_instances:
     player.display_info()
+
+# ninja bonus
+class Player:
+    def __init__(self, name, age, position, team):
+        self.name = name
+        self.age = age
+        self.position = position
+        self.team = team
+
+    # Method to display all player's information
+    def display_info(self):
+        print(f"Name: {self.name}, Age: {self.age}, Position: {self.position}, Team: {self.team}")
+
+    @classmethod
+    def get_team(cls, team_list):
+        """Given a list of dictionaries, populate and return a new list of Player objects."""
+        player_instances = []
+        for player_dict in team_list:
+            player = cls(player_dict['name'], player_dict['age'], player_dict['position'], player_dict['team'])
+            player_instances.append(player)
+        return player_instances
+
+# List of player dictionaries
+players = [
+    {
+        "name": "Kevin Durant", 
+        "age": 34, 
+        "position": "Small Forward", 
+        "team": "Brooklyn Nets"
+    },
+    {
+        "name": "Jason Tatum", 
+        "age": 24, 
+        "position": "Small Forward", 
+        "team": "Boston Celtics"
+    },
+    {
+        "name": "Kyrie Irving", 
+        "age": 32, 
+        "position": "Point Guard", 
+        "team": "Brooklyn Nets"
+    }
+]
+
+# Using the class method to create Player instances
+player_instances = Player.get_team(players)
+
+# Displaying information for each player in the new list
+for player in player_instances:
+    player.display_info()
