@@ -1,0 +1,30 @@
+use dojos_and_ninjas_schema;  
+/* select * from */
+select * from dojos;
+/* Add 03 dojo*/
+INSERT INTO dojos_and_ninjas_schema.dojos (name) VALUES ('Dojo 1'), ('Dojo 2'), ('Dojo 3');
+/*delete 03 dojos*/
+DELETE FROM dojos_and_ninjas_schema.dojos ;
+/* create 03 new dojo*/
+INSERT INTO dojos_and_ninjas_schema.dojos (name) VALUES ('Dojo 4'), ('Dojo 5'), ('Dojo 6');
+/* create 03 ninja in first dojo*/
+INSERT INTO dojos_and_ninjas_schema.ninjas (first_name, last_name, age, dojo_id) VALUES ('Naruto', 'Shipouden', 25, 4), ('Kyro', 'Kakachi', 30, 4), ('Caysel', 'Apporo', 32, 4);
+/*Select from ninja*/
+select * from ninjas;
+/* create 03 ninja insecond dojo*/
+INSERT INTO dojos_and_ninjas_schema.ninjas (first_name, last_name, age, dojo_id) VALUES ('Dragon', 'Ball', 35, 5), ('Vegeta', 'Sayanz', 36, 5), ('Frezar', 'Boo', 29, 5);
+/* create 03 ninja in third dojo*/
+INSERT INTO dojos_and_ninjas_schema.ninjas (first_name, last_name, age, dojo_id) VALUES ('Ichigo', 'Dayko', 19, 6), ('Inoue', 'Sama', 18, 6), ('Rukia', 'Bani', 22, 6);
+/*Retrive all ninja from first dojo*/
+SELECT * FROM dojos_and_ninjas_schema.ninjas WHERE dojo_id = 4;
+/*Retrive all ninja from last dojo*/
+SELECT * FROM dojos_and_ninjas_schema.ninjas WHERE dojo_id = 6;
+as WHERE dojo_id = 4;
+/*Retrive last ninja's dojo*/
+SELECT * FROM dojos_and_ninjas_schema.ninjas WHERE dojo_id = (SELECT MAX(id) FROM dojos_and_ninjas_schema.dojos);
+/*Retrive join query 01*/
+SELECT ninjas.*, dojos.* FROM ninjas JOIN dojos ON ninjas.dojo_id = dojos.id WHERE ninjas.id = 6;
+/*Retrive join query 02*/
+SELECT ninjas.*, dojos.* FROM ninjas JOIN dojos ON ninjas.dojo_id = dojos.id;
+
+
