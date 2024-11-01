@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojo Ninja Data</title>
+    <link rel="stylesheet" type="text/css" href="../static/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="dojoPage bg-white p-4 rounded shadow-sm text-center">
+
+    <div class="dojoNinjas">
+
+        {% if dojo_info_w_ninjas %}
+
+        <h2 class="text-primary">{{ dojo_info_w_ninjas[0].dojo }} Ninjas</h2>
+
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered mt-4">
+                <thead class="table-primary">
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Age</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ninja in dojo_info_w_ninjas %}
+                    <tr>
+                        <td>{{ ninja.first_name }}</td>
+                        <td>{{ ninja.last_name }}</td>
+                        <td>{{ ninja.age }}</td>
+                        <td><a href='/ninja/edit/{{ninjas.id}}' class="btn btn-warning">Edit</a>
+                            <a href='/ninja/destroy/{{ninjas.id}}' class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        {% else %}
+
+        <h2 class="text-secondary">No Ninjas in this Dojo yet!</h2>
+
+        {% endif %}
+
+    </div>
+
+    <a class="dojohomebutton btn btn-primary" href="/dojos">Home</a>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
